@@ -118,27 +118,34 @@ public class PlayerController : MonoBehaviour
     {
         List<Collider> nearbyObjects = new List<Collider>(Physics.OverlapSphere(transform.position, interactionRadius));
         float shortestDistance = float.MaxValue;
-        Collider closestCollider = null;
+        GameObject closestObject = null;
         foreach (Collider c in nearbyObjects)
         {
-            if (c.GetComponent<Interactable>())
+            if (c.gameObject.GetComponent<Interactable>())
             {
                 if (Vector3.Distance(transform.position, c.transform.position) < shortestDistance)
                 {
-                    closestCollider = c;
+                    closestObject = c.gameObject;
+                }
+            }
+            else if (c.GetComponentInParent<Interactable>())
+            {
+                if (Vector3.Distance(transform.position, c.transform.position) < shortestDistance)
+                {
+                    closestObject = c.gameObject.transform.parent.gameObject;
                 }
             }
         }
 
-        if (closestCollider != null)
+        if (closestObject != null)
         {
             // Place floating text over the interactable object
             //Debug.Log("Near " + closestCollider.gameObject.name);
             // Check for interaction - this may need to be moved into a separate method if 
             if (Input.GetButtonDown("Interact"))
             {
-                //Debug.Log("Trying to pick up");
-                closestCollider.gameObject.GetComponent<Interactable>().Interact(this);
+                //Debug.Log(closestObject.name);
+                closestObject.GetComponent<Interactable>().Interact(this);
             }
         }
     }
