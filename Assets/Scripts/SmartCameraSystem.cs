@@ -5,6 +5,9 @@ using System.Linq;
 
 public class SmartCameraSystem : MonoBehaviour
 {
+    // Singleton
+    public static SmartCameraSystem instance;
+
     private Renderer targetRenderer;
     private List<Camera> cameras;
     private List<Camera> currentCamerasWithViewOfTarget;
@@ -17,20 +20,30 @@ public class SmartCameraSystem : MonoBehaviour
 
 	void Start ()
 	{
-        targetRenderer = GameObject.FindGameObjectWithTag("Target").GetComponent<Renderer>();
-
-        // Get list of Cameras in scene
-        GameObject[] cameraObjects = GameObject.FindGameObjectsWithTag("Camera");
-        cameras = new List<Camera>();
-        foreach (GameObject c in cameraObjects)
+        // Singleton structure
+        if (instance == null)
         {
-            cameras.Add(c.GetComponent<Camera>());
-            c.SetActive(false);
-        }
+            instance = this;
 
-        prevCamera = startingCamera;
-        prevCamera.gameObject.SetActive(true);
-        currentCamera = prevCamera;
+            targetRenderer = GameObject.FindGameObjectWithTag("Target").GetComponent<Renderer>();
+
+            // Get list of Cameras in scene
+            GameObject[] cameraObjects = GameObject.FindGameObjectsWithTag("Camera");
+            cameras = new List<Camera>();
+            foreach (GameObject c in cameraObjects)
+            {
+                cameras.Add(c.GetComponent<Camera>());
+                c.SetActive(false);
+            }
+
+            prevCamera = startingCamera;
+            prevCamera.gameObject.SetActive(true);
+            currentCamera = prevCamera;
+        }
+        else
+        {
+            Destroy(this);
+        }        
 	}
 
 	void Update ()
@@ -106,5 +119,10 @@ public class SmartCameraSystem : MonoBehaviour
     {
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(cam);
         return GeometryUtility.TestPlanesAABB(planes, r.bounds);
+    }
+
+    public static Camera GetCurrentCamera()
+    {
+        return instance.prevCamera;
     }
 }
