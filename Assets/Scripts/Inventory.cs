@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public Item[] m_items;
     private bool m_isOpen = false;
+
+    public Item[] m_items;
     public GameObject m_inventoryScreen;
+    public GameObject[][] m_inventoryRows;
 
     // Use this for initialization
     void Start ()
@@ -16,10 +18,24 @@ public class Inventory : MonoBehaviour
         if (m_inventoryScreen)
         {
             m_inventoryScreen.SetActive(m_isOpen);
+            InitializeInventoryRows();
         }
         else
         {
             // Oops!
+        }
+    }
+
+    private void InitializeInventoryRows()
+    {
+        m_inventoryRows = new GameObject[4][];
+        for (int row = 0; row < 4; row++)
+        {
+            m_inventoryRows[row] = new GameObject[4];
+            for (int col = 0; col < 4; col++)
+            {
+                m_inventoryRows[row][col] = m_inventoryScreen.transform.GetChild(row).GetChild(col).GetChild(0).gameObject;
+            }
         }
     }
 	
@@ -90,5 +106,10 @@ public class Inventory : MonoBehaviour
     {
         m_isOpen = !m_isOpen;
         m_inventoryScreen.SetActive(m_isOpen);
+    }
+
+    public void SetItems(Item[] items)
+    {
+
     }
 }
