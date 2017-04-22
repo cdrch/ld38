@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Code heavily drawn from: https://gamedevacademy.org/tutorial-multi-level-platformer-game-in-unity/
 
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private Inventory m_inventory;
 
     private bool pressedJump = false;
+
+    public Text textForInteractable;
 
 	void Start ()
 	{
@@ -134,6 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             // Place floating text over the interactable object
             //Debug.Log("Near " + closestCollider.gameObject.name);
+            //textForInteractable.gameObject.transform.position = // WORKING HERE
             // Check for interaction - this may need to be moved into a separate method if 
             if (Input.GetButtonDown("Interact"))
             {
