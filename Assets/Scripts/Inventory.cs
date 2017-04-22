@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            // Oops!
+            Debug.LogError("Couldn't find Inventory Object");
         }
     }
 
@@ -63,13 +64,13 @@ public class Inventory : MonoBehaviour
         if (itemPlaced)
         {
             // "The item has been put in your inventory!"
-            // Play some happy SFX
+            // TODO: Play some happy SFX
             Debug.Log(item.name + " has been put in your inventory!");
         }
         else
         {
             // "Your inventory is full!"
-            // Play some sad SFX
+            // TODO: Play some sad SFX
             Debug.Log("Your inventory is too full to hold " + item.name + "!");
         }
     }
@@ -106,6 +107,32 @@ public class Inventory : MonoBehaviour
     {
         m_isOpen = !m_isOpen;
         m_inventoryScreen.SetActive(m_isOpen);
+        SetItemImages(m_items);
+    }
+
+    private void SetItemImages(Item[] items)
+    {
+        int row = 0;
+        int col = 0;
+
+        for (int idx = 0; idx < items.Length; idx++)
+        {
+            if (items[idx] != null)
+            {
+                m_inventoryRows[row][col].GetComponent<Image>().sprite = items[idx].GetSprite();
+
+                col++;
+                if (col == 4)
+                {
+                    row++;
+                    col = 0;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 
     public void SetItems(Item[] items)

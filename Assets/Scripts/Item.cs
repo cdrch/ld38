@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : Interactable {
-    public Texture2D m_GUITexture;
+    public Sprite m_GUISprite;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -35,5 +37,10 @@ public class Item : Interactable {
         {
             return false;
         }        
+    }
+
+    public Sprite GetSprite()
+    {
+        return m_GUISprite;
     }
 }
