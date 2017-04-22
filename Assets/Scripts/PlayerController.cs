@@ -11,22 +11,42 @@ public class PlayerController : MonoBehaviour
     public float verticalLookSpeed = 10f;
     public float rotationInterpolationSpeed = 0.15f;
 
+    Inventory m_inventory;
+
     Rigidbody rb;
     Collider col;
 
     private bool pressedJump = false;
+    private bool pressedInventory = false;
 
 	void Start ()
 	{
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        m_inventory = GetComponent<Inventory>();
 	}
 
 	void Update ()
 	{
         HandleWalk();
         HandleJump();
+        HandleInventory();
 	}
+
+    private void HandleInventory()
+    {
+        float iAxis = Input.GetAxis("Fire1");
+
+        if (iAxis > 0f && !pressedInventory)
+        {
+            m_inventory.ToggleOpen();
+            pressedInventory = true;
+        }
+        else if (iAxis == 0f)
+        {
+            pressedInventory = false;
+        }
+    }
 
     private void HandleWalk()
     {
