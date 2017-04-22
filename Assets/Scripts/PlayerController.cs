@@ -18,13 +18,8 @@ public class PlayerController : MonoBehaviour
     public float interactionRadius = 2f;
     Inventory m_inventory;
 
-    Rigidbody rb;
-    Collider col;
-
     private Rigidbody rb;
     private Collider col;
-
-    private Inventory inv;
 
     private bool pressedJump = false;
     private bool pressedInventory = false;
@@ -33,7 +28,6 @@ public class PlayerController : MonoBehaviour
 	{
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-        inv = GetComponent<Inventory>();
         m_inventory = GetComponent<Inventory>();
 	}
 
