@@ -36,11 +36,13 @@ public class PlayerController : MonoBehaviour
         HandleWalk();
         HandleJump();
         HandleInventory();
+
+        CheckForInteractables();
 	}
 
     private void HandleInventory()
     {
-        float iAxis = Input.GetAxis("Fire1");
+        float iAxis = Input.GetAxis("Fire2");
 
         if (iAxis > 0f && !pressedInventory)
         {
@@ -140,17 +142,13 @@ public class PlayerController : MonoBehaviour
         if (closestCollider != null)
         {
             // Place floating text over the interactable object
-
+            //Debug.Log("Near " + closestCollider.gameObject.name);
             // Check for interaction - this may need to be moved into a separate method if 
             if (Input.GetButtonDown("Interact"))
             {
+                //Debug.Log("Trying to pick up");
                 closestCollider.gameObject.GetComponent<Interactable>().Interact(this);
             }
         }
-    }
-
-    private void PickUpItem()
-    {
-        //Collider[] nearbyColPhysics.OverlapSphere()
     }
 }
