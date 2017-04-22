@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public Item[] m_items;
     private bool m_isOpen = false;
+
+    public Item[] m_items;
     public GameObject m_inventoryScreen;
+    public GameObject[][] m_inventoryRows;
 
     // Use this for initialization
     void Start ()
@@ -16,10 +19,24 @@ public class Inventory : MonoBehaviour
         if (m_inventoryScreen)
         {
             m_inventoryScreen.SetActive(m_isOpen);
+            InitializeInventoryRows();
         }
         else
         {
-            // Oops!
+            Debug.LogError("Couldn't find Inventory Object");
+        }
+    }
+
+    private void InitializeInventoryRows()
+    {
+        m_inventoryRows = new GameObject[4][];
+        for (int row = 0; row < 4; row++)
+        {
+            m_inventoryRows[row] = new GameObject[4];
+            for (int col = 0; col < 4; col++)
+            {
+                m_inventoryRows[row][col] = m_inventoryScreen.transform.GetChild(row).GetChild(col).GetChild(0).gameObject;
+            }
         }
     }
 	
@@ -31,7 +48,7 @@ public class Inventory : MonoBehaviour
 
         }
 	}
-
+    
     public void AddItemToInventory(Item item)
     {
         bool itemPlaced = false;
@@ -47,13 +64,13 @@ public class Inventory : MonoBehaviour
         if (itemPlaced)
         {
             // "The item has been put in your inventory!"
-            // Play some happy SFX
+            // TODO: Play some happy SFX
             Debug.Log(item.name + " has been put in your inventory!");
         }
         else
         {
             // "Your inventory is full!"
-            // Play some sad SFX
+            // TODO: Play some sad SFX
             Debug.Log("Your inventory is too full to hold " + item.name + "!");
         }
     }
@@ -90,5 +107,36 @@ public class Inventory : MonoBehaviour
     {
         m_isOpen = !m_isOpen;
         m_inventoryScreen.SetActive(m_isOpen);
+        SetItemImages(m_items);
+    }
+
+    private void SetItemImages(Item[] items)
+    {
+        int row = 0;
+        int col = 0;
+
+        for (int idx = 0; idx < items.Length; idx++)
+        {
+            if (items[idx] != null)
+            {
+                m_inventoryRows[row][col].GetComponent<Image>().sprite = items[idx].GetSprite();
+
+                col++;
+                if (col == 4)
+                {
+                    row++;
+                    col = 0;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public void SetItems(Item[] items)
+    {
+
     }
 }
