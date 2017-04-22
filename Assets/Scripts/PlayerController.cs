@@ -17,17 +17,16 @@ public class PlayerController : MonoBehaviour
     // How far away the code will check for interactables
     public float interactionRadius = 2f;
 
-    private Rigidbody rb;
-    private Collider col;
+    private Rigidbody m_rigidBody;
+    private Collider m_collider;
     private Inventory m_inventory;
-    
+
     private bool pressedJump = false;
-    private bool pressedInventory = false;
 
 	void Start ()
 	{
-        rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        m_rigidBody = GetComponent<Rigidbody>();
+        m_collider = GetComponent<Collider>();
         m_inventory = GetComponent<Inventory>();
 	}
 
@@ -41,23 +40,16 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInventory()
     {
-        float iAxis = Input.GetAxis("Fire1");
-
-        if (iAxis > 0f && !pressedInventory)
+        if (Input.GetButtonDown("Inventory"))
         {
             m_inventory.ToggleOpen();
-            pressedInventory = true;
-        }
-        else if (iAxis == 0f)
-        {
-            pressedInventory = false;
         }
     }
 
     private void HandleWalk()
     {
         // Reset the velocity to zero
-        rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+        m_rigidBody.velocity = new Vector3(0f, m_rigidBody.velocity.y, 0f);
 
         // The amount that should be moved in this frame
         float distance = walkSpeed * Time.deltaTime;
@@ -75,7 +67,7 @@ public class PlayerController : MonoBehaviour
         Vector3 currPosition = transform.position;
         Vector3 newPosition = currPosition + movement;
 
-        rb.MovePosition(newPosition);
+        m_rigidBody.MovePosition(newPosition);
     }
 
     private void HandleJump()
@@ -90,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 pressedJump = true;
                 Vector3 jumpVector = new Vector3(0f, jumpSpeed, 0f);
 
-                rb.velocity = rb.velocity + jumpVector;
+                m_rigidBody.velocity = m_rigidBody.velocity + jumpVector;
             }
         }
         else
@@ -101,9 +93,9 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckGrounded()
     {
-        float sizeX = col.bounds.size.x;
-        float sizeZ = col.bounds.size.z;
-        float sizeY = col.bounds.size.y;
+        float sizeX = m_collider.bounds.size.x;
+        float sizeZ = m_collider.bounds.size.z;
+        float sizeY = m_collider.bounds.size.y;
 
         // Position of the 4 bottom corners of the game object
         // We add 0.01 in Y as a skin so that there is some distance between the point and the floor
