@@ -38,7 +38,11 @@ GameObject:
   - component: {fileID: 65592354123692480}
   - component: {fileID: 114219711487673400}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: Door
+=======
+  m_Name: door
+>>>>>>> door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,8 +175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isOpen: 0
+<<<<<<< HEAD
   m_closedRotation: 0
   m_openedRotation: 0
+=======
+>>>>>>> door
 --- !u!137 &137043894589969092
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

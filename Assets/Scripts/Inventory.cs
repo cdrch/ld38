@@ -63,6 +63,10 @@ public class Inventory : MonoBehaviour
         }
         if (itemPlaced)
         {
+            item.gameObject.SetActive(false);
+            item.transform.parent = gameObject.transform;
+            item.transform.localPosition = Vector3.zero;
+
             // "The item has been put in your inventory!"
             // TODO: Play some happy SFX
             Debug.Log(item.name + " has been put in your inventory!");
