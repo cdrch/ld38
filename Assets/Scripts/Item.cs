@@ -30,7 +30,6 @@ public class Item : Interactable {
         if (i != null)
         {
             interacter.GetComponent<Inventory>().AddItemToInventory(i);
-            Destroy(gameObject, Time.deltaTime);
             return true;
         }
         else // If something prevented pick up
