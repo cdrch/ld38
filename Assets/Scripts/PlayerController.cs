@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Code heavily drawn from: https://gamedevacademy.org/tutorial-multi-level-platformer-game-in-unity/
+
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5f;
