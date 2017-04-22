@@ -72,7 +72,7 @@ public class SmartCameraSystem : MonoBehaviour
                 Physics.Raycast(ray, out hit);
                 if (hit.collider.tag == "Player" || hit.collider.tag == "Target")
                 {
-                    Debug.Log("1");
+                    //Debug.Log("1");
                     currentCamerasWithViewOfTarget.Add(cam);
                 }
                 
@@ -82,7 +82,7 @@ public class SmartCameraSystem : MonoBehaviour
         // If there is only one camera, use that
         if (currentCamerasWithViewOfTarget.Count == 1)
         {
-            Debug.Log("Just The One");
+            //Debug.Log("Just The One");
             currentCamera = currentCamerasWithViewOfTarget.ElementAt(0);
         }
         else
@@ -101,14 +101,14 @@ public class SmartCameraSystem : MonoBehaviour
                     shortestDistance = distance;
                     currentCamera = cam;
                 }
-                Debug.Log(cam + ": " + distance);
+                //Debug.Log(cam + ": " + distance);
             }
         }
 
         // If the selected camera was not already the active camera, make it the new active camera, so long as the new camera is at least 5 units closer or the old camera has lost sight of the player
         if (currentCamera != prevCamera && (Vector3.Distance(currentCamera.transform.position, targetRenderer.transform.position) + 5f < Vector3.Distance(prevCamera.transform.position, targetRenderer.transform.position) || !currentCamerasWithViewOfTarget.Contains(prevCamera)))
         {
-            Debug.Log("2");
+            //Debug.Log("2");
             prevCamera.gameObject.SetActive(false);
             currentCamera.gameObject.SetActive(true);
             prevCamera = currentCamera;
