@@ -13,14 +13,14 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 7f;
     public float verticalLookSpeed = 10f;
     public float rotationInterpolationSpeed = 0.15f;
-
+    
     // How far away the code will check for interactables
     public float interactionRadius = 2f;
-    Inventory m_inventory;
 
     private Rigidbody rb;
     private Collider col;
-
+    private Inventory m_inventory;
+    
     private bool pressedJump = false;
     private bool pressedInventory = false;
 
@@ -36,13 +36,12 @@ public class PlayerController : MonoBehaviour
         HandleWalk();
         HandleJump();
         HandleInventory();
-
         CheckForInteractables();
 	}
 
     private void HandleInventory()
     {
-        float iAxis = Input.GetAxis("Fire2");
+        float iAxis = Input.GetAxis("Fire1");
 
         if (iAxis > 0f && !pressedInventory)
         {

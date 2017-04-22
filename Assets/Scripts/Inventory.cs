@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 
         }
 	}
-
+    
     public void AddItemToInventory(Item item)
     {
         bool itemPlaced = false;
