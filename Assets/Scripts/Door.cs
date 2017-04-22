@@ -27,6 +27,7 @@ public class Door : Interactable
 	// Update is called once per frame
 	void Update ()
     {
+        
 		if (m_isMoving)
         {
             m_rotationTime += (m_isOpen ? -1 : 1) * Time.deltaTime;
@@ -35,19 +36,24 @@ public class Door : Interactable
                 m_isMoving = false;
             }
             float currentRotationAngle = Mathf.Lerp(m_closedRotation, m_openedRotation, m_rotationTime);
-            Debug.Log(currentRotationAngle);
-            Quaternion currentRotation = this.gameObject.transform.localRotation;
-            this.gameObject.transform.localRotation.Set(currentRotation.x, currentRotation.y, currentRotationAngle, currentRotation.w);
+            Vector3 currentRotation = this.gameObject.transform.localRotation.eulerAngles;
+            float deltaAngle = currentRotationAngle - currentRotation.z;
+            //this.gameObject.transform.localRotation.Set(currentRotation.x, currentRotation.y, currentRotationAngle, currentRotation.w);
+            this.gameObject.transform.Rotate(Vector3.up * (deltaAngle * Mathf.Deg2Rad));
         }
+        
+
+
 	}
 
     public override bool Interact(PlayerController interactor)
     {
         if (!m_isMoving)
         {
-            Debug.Log("Opening door");
+            Debug.Log("Opening Door");
             m_isOpen = !m_isOpen;
-            m_rotationTime = m_isOpen ? 1f : 0f;
+            //m_rotationTime = m_isOpen ? 1f : 0f;
+            this.GetComponent<Animator>().Play("Open");
             m_isMoving = true;
             return true;
         }
