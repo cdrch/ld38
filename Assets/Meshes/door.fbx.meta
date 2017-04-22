@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: c4ca834ff29b9de40820c9f933f0d0fa
+timeCreated: 1492892955
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Barell
+    100002: Base
+    100004: Case
+    100006: //RootNode
+    100008: door
+    100010: door.001
+    100012: fence_1
+    100014: fence_2
+    100016: fence_3
+    100018: fence_4
+    100020: House
+    100022: lamp
+    100024: Planck
+    100026: Rock_1
+    100028: Rock_2
+    100030: Rock_3
+    100032: Rock_4
+    100034: Snow
+    100036: stalictite
+    100038: staligmite
+    100040: wagon
+    100042: wagon.001
+    100044: window
+    400000: Barell
+    400002: Base
+    400004: Case
+    400006: door
+    400008: //RootNode
+    400010: door.001
+    400012: fence_1
+    400014: fence_2
+    400016: fence_3
+    400018: fence_4
+    400020: House
+    400022: lamp
+    400024: Planck
+    400026: Rock_1
+    400028: Rock_2
+    400030: Rock_3
+    400032: Rock_4
+    400034: Snow
+    400036: stalictite
+    400038: staligmite
+    400040: wagon
+    400042: wagon.001
+    400044: window
+    2300000: Barell
+    2300002: Base
+    2300004: Case
+    2300006: door
+    2300008: door.001
+    2300010: fence_1
+    2300012: fence_2
+    2300014: fence_3
+    2300016: fence_4
+    2300018: House
+    2300020: lamp
+    2300022: Planck
+    2300024: Rock_1
+    2300026: Rock_2
+    2300028: Rock_3
+    2300030: Rock_4
+    2300032: Snow
+    2300034: stalictite
+    2300036: staligmite
+    2300038: wagon
+    2300040: wagon.001
+    2300042: window
+    3300000: Barell
+    3300002: Base
+    3300004: Case
+    3300006: door
+    3300008: door.001
+    3300010: fence_1
+    3300012: fence_2
+    3300014: fence_3
+    3300016: fence_4
+    3300018: House
+    3300020: lamp
+    3300022: Planck
+    3300024: Rock_1
+    3300026: Rock_2
+    3300028: Rock_3
+    3300030: Rock_4
+    3300032: Snow
+    3300034: stalictite
+    3300036: staligmite
+    3300038: wagon
+    3300040: wagon.001
+    3300042: window
+    4300000: door.001
+    4300002: window
+    4300004: lamp
+    4300006: staligmite
+    4300008: stalictite
+    4300010: wagon.001
+    4300012: wagon
+    4300014: Snow
+    4300016: Planck
+    4300018: Barell
+    4300020: Rock_4
+    4300022: Rock_3
+    4300024: Rock_2
+    4300026: Rock_1
+    4300028: Case
+    4300030: Base
+    4300032: House
+    4300034: door
+    4300036: fence_4
+    4300038: fence_3
+    4300040: fence_2
+    4300042: fence_1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
