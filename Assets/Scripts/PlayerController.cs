@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 
     // How far away the code will check for interactables
     public float interactionRadius = 2f;
+    Inventory m_inventory;
+
+    Rigidbody rb;
+    Collider col;
 
     private Rigidbody rb;
     private Collider col;
@@ -23,19 +27,37 @@ public class PlayerController : MonoBehaviour
     private Inventory inv;
 
     private bool pressedJump = false;
+    private bool pressedInventory = false;
 
 	void Start ()
 	{
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         inv = GetComponent<Inventory>();
+        m_inventory = GetComponent<Inventory>();
 	}
 
 	void Update ()
 	{
         HandleWalk();
         HandleJump();
+        HandleInventory();
 	}
+
+    private void HandleInventory()
+    {
+        float iAxis = Input.GetAxis("Fire1");
+
+        if (iAxis > 0f && !pressedInventory)
+        {
+            m_inventory.ToggleOpen();
+            pressedInventory = true;
+        }
+        else if (iAxis == 0f)
+        {
+            pressedInventory = false;
+        }
+    }
 
     private void HandleWalk()
     {

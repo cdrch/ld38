@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
     public Item[] m_items;
+    private bool m_isOpen = false;
+    public GameObject m_inventoryScreen;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         m_items = new Item[16];
-	}
+        m_inventoryScreen = this.gameObject.transform.GetChild(0).gameObject;
+        if (m_inventoryScreen)
+        {
+            m_inventoryScreen.SetActive(m_isOpen);
+        }
+        else
+        {
+            // Oops!
+        }
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if (m_isOpen)
+        {
+
+        }
 	}
 
     public void AddItemToInventory(Item item)
@@ -67,5 +84,11 @@ public class Inventory : MonoBehaviour {
         }
         Debug.Log(item.name + " is not in your inventory.");
         return null;
+    }
+
+    public void ToggleOpen()
+    {
+        m_isOpen = !m_isOpen;
+        m_inventoryScreen.SetActive(m_isOpen);
     }
 }
