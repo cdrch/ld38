@@ -9,9 +9,9 @@ public class SnowRandomizer : MonoBehaviour
     public float m_drift = 0.01f;
     public float m_jitter = 0.5f;
     public Vector3 m_snowDirection = Vector3.zero;
-    public float m_maxWindChangeTimer = 5.0f;
-    float m_currentMaxWindChangeTimer = 0.0f;
-    float m_currentWindChangeTimer = 0.0f;
+    public float m_maxWindChangeTimer = 5f;
+    float m_currentMaxWindChangeTimer = 0f;
+    float m_currentWindChangeTimer = 0f;
 
     // Use this for initialization
     void Start ()
@@ -26,7 +26,7 @@ public class SnowRandomizer : MonoBehaviour
         m_currentWindChangeTimer += Time.deltaTime;
         if (m_currentWindChangeTimer >= m_currentMaxWindChangeTimer)
         {
-            m_currentWindChangeTimer = 0.0f;
+            m_currentWindChangeTimer = 0f;
             UpdateSnowDirection();
             UpdateCurrentMaxWindTimer();
             PushSnow(m_drift);
@@ -35,7 +35,7 @@ public class SnowRandomizer : MonoBehaviour
 
     void PushSnow(float drift)
     {
-        if (m_snowDirection.magnitude != 0.0f)
+        if (m_snowDirection.magnitude != 0f)
         {
             ParticleSystem.Particle[] particles = new ParticleSystem.Particle[m_particleSystem.main.maxParticles];
             int numParticlesAlive = m_particleSystem.GetParticles(particles);
@@ -56,12 +56,12 @@ public class SnowRandomizer : MonoBehaviour
 
     float RandomClamped()
     {
-        return Random.Range(-1.0f, 1.0f);
+        return Random.Range(-1f, 1f);
     }
 
     void UpdateSnowDirection()
     {
-        m_snowDirection += new Vector3(RandomClamped() * m_jitter, 0.0f, RandomClamped() * m_jitter);
+        m_snowDirection += new Vector3(RandomClamped() * m_jitter, 0f, RandomClamped() * m_jitter);
         m_snowDirection.Normalize();
     }
 }
