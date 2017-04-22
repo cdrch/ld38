@@ -9,6 +9,12 @@ public class Interactable : MonoBehaviour
 		
 	}
 
+    /**
+    * Given a PlayerController, method should attempt to interact with the Object
+    * this script is attached to. 
+    * param - PlayerController - controller for the player
+    * returns {bool} - True if the interaction was successful, false if not
+    */
     public virtual bool Interact(PlayerController interacter)
     {
         // Consider adding some general code to show an icon over whatever is being interacted with.

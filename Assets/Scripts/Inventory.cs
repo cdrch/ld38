@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
     {
 		if (m_isOpen)
         {
-
+            // TODO: Handle input here
         }
 	}
     
@@ -130,6 +130,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
+                // We've hit the last item, stop iterating
                 break;
             }
         }
