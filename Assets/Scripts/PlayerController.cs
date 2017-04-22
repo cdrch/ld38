@@ -4,6 +4,9 @@ using UnityEngine;
 
 // Code heavily drawn from: https://gamedevacademy.org/tutorial-multi-level-platformer-game-in-unity/
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Inventory))]
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5f;
@@ -11,8 +14,13 @@ public class PlayerController : MonoBehaviour
     public float verticalLookSpeed = 10f;
     public float rotationInterpolationSpeed = 0.15f;
 
-    Rigidbody rb;
-    Collider col;
+    // How far away the code will check for interactables
+    public float interactionRadius = 2f;
+
+    private Rigidbody rb;
+    private Collider col;
+
+    private Inventory inv;
 
     private bool pressedJump = false;
 
@@ -20,6 +28,7 @@ public class PlayerController : MonoBehaviour
 	{
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        inv = GetComponent<Inventory>();
 	}
 
 	void Update ()
@@ -94,5 +103,38 @@ public class PlayerController : MonoBehaviour
 
         // If any corner is grounded, the object is grounded
         return (grounded1 || grounded2 || grounded3 || grounded4);
+    }
+
+    private void CheckForInteractables()
+    {
+        List<Collider> nearbyObjects = new List<Collider>(Physics.OverlapSphere(transform.position, interactionRadius));
+        float shortestDistance = float.MaxValue;
+        Collider closestCollider = null;
+        foreach (Collider c in nearbyObjects)
+        {
+            if (c.GetComponent<Interactable>())
+            {
+                if (Vector3.Distance(transform.position, c.transform.position) < shortestDistance)
+                {
+                    closestCollider = c;
+                }
+            }
+        }
+
+        if (closestCollider != null)
+        {
+            // Place floating text over the interactable object
+
+            // Check for interaction - this may need to be moved into a separate method if 
+            if (Input.GetButtonDown("Interact"))
+            {
+                closestCollider.gameObject.GetComponent<Interactable>().Interact(this);
+            }
+        }
+    }
+
+    private void PickUpItem()
+    {
+        //Collider[] nearbyColPhysics.OverlapSphere()
     }
 }
