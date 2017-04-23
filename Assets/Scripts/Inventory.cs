@@ -11,6 +11,11 @@ public class Inventory : MonoBehaviour
     public GameObject m_inventoryScreen;
     public GameObject[][] m_inventoryRows;
 
+    public CraftingManager m_craftingManger;
+
+    public Color m_normalItemColor;
+    public Color m_tintedItemColor;
+
     // Use this for initialization
     void Start ()
     {
@@ -25,6 +30,7 @@ public class Inventory : MonoBehaviour
         {
             Debug.LogError("Couldn't find Inventory Object");
         }
+        m_craftingManger = this.gameObject.GetComponent<CraftingManager>();
     }
 
     private void InitializeInventoryRows()
@@ -35,7 +41,7 @@ public class Inventory : MonoBehaviour
             m_inventoryRows[row] = new GameObject[4];
             for (int col = 0; col < 4; col++)
             {
-                m_inventoryRows[row][col] = m_inventoryScreen.transform.GetChild(row).GetChild(col).GetChild(0).gameObject;
+                m_inventoryRows[row][col] = m_inventoryScreen.transform.GetChild(row).GetChild(col).gameObject;
             }
         }
     }
@@ -114,6 +120,14 @@ public class Inventory : MonoBehaviour
         SetItemImages(m_items);
     }
 
+    private void SetSlotImageAndColor(ref GameObject slot, Item item)
+    {
+        slot.transform.GetChild(0).GetComponent<Image>().sprite = item.GetSprite();
+
+        bool itemInRecipe = m_craftingManger.IsItemInRecipe(item.GetItemType());
+        slot.GetComponent<Image>().color = itemInRecipe ? m_tintedItemColor : m_normalItemColor;
+    }
+
     private void SetItemImages(Item[] items)
     {
         int row = 0;
@@ -123,8 +137,13 @@ public class Inventory : MonoBehaviour
         {
             if (items[idx] != null)
             {
-                m_inventoryRows[row][col].GetComponent<Image>().sprite = items[idx].GetSprite();
+                SetSlotImageAndColor(ref m_inventoryRows[row][col], items[idx]);
+                /*
+                m_inventoryRows[row][col].transform.GetChild(0).GetComponent<Image>().sprite = items[idx].GetSprite();
 
+                bool itemInRecipe = m_craftingManger.IsItemInRecipe(items[idx].GetItemType());
+                m_inventoryRows[row][col].GetComponent<Image>().color = itemInRecipe ? m_tintedItemColor : m_normalItemColor;
+                */
                 col++;
                 if (col == 4)
                 {
