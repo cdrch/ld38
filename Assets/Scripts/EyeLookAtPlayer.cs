@@ -18,12 +18,13 @@ public class EyeLookAtPlayer : MonoBehaviour {
 
     public bool LookForPlayer(GameObject player)
     {
-        Vector3 direction = this.transform.position - player.transform.position;
+        Vector3 direction = (player.transform.position + Vector3.up * 2f) - this.transform.position;
+        float dist = direction.magnitude;
         direction.Normalize();
         Ray ray = new Ray(this.transform.position, direction);
         RaycastHit hit;
-
-        bool hitAnything = m_collider.Raycast(ray, out hit, 1000f);
+        //Debug.DrawLine(this.transform.position, direction * dist + this.transform.position, Color.red);
+        bool hitAnything = Physics.Linecast(this.transform.position, (player.transform.position + Vector3.up * 2f), out hit);
 
         if (hitAnything && hit.collider && hit.collider.CompareTag("Player"))
         {
