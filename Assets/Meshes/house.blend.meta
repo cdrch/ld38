@@ -28,6 +28,14 @@ ModelImporter:
     100040: wagon
     100042: wagon_001
     100044: window
+    100046: panel
+    100048: wagon1
+    100050: wagon2
+    100052: wagon3
+    100054: Wagon3Armature
+    100056: Wheel
+    100058: House2
+    100060: HouseLink
     400000: Barell
     400002: Base
     400004: Case
@@ -51,6 +59,14 @@ ModelImporter:
     400040: wagon
     400042: wagon_001
     400044: window
+    400046: panel
+    400048: wagon1
+    400050: wagon2
+    400052: wagon3
+    400054: Wagon3Armature
+    400056: Wheel
+    400058: House2
+    400060: HouseLink
     2300000: Barell
     2300002: Base
     2300004: Case
@@ -73,6 +89,11 @@ ModelImporter:
     2300038: wagon
     2300040: wagon_001
     2300042: window
+    2300044: panel
+    2300046: wagon1
+    2300048: wagon2
+    2300050: House2
+    2300052: HouseLink
     3300000: Barell
     3300002: Base
     3300004: Case
@@ -95,6 +116,11 @@ ModelImporter:
     3300038: wagon
     3300040: wagon_001
     3300042: window
+    3300044: panel
+    3300046: wagon1
+    3300048: wagon2
+    3300050: House2
+    3300052: HouseLink
     4300000: door_001
     4300002: window
     4300004: lamp
@@ -117,8 +143,16 @@ ModelImporter:
     4300038: fence_3
     4300040: fence_2
     4300042: fence_1
+    4300044: wagon3
+    4300046: panel
+    4300048: wagon1
+    4300050: wagon2
+    4300052: House2
+    4300054: HouseLink
     7400000: Default Take
+    7400002: WheelAnimation
     9500000: //RootNode
+    13700000: wagon3
   materials:
     importMaterials: 1
     materialName: 0
