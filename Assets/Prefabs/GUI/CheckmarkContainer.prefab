@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224875753851488440}
   - component: {fileID: 222942816555037768}
   - component: {fileID: 114339845166285618}
-  - component: {fileID: 114871931124001998}
+  - component: {fileID: 114407294212940736}
   m_Layer: 8
   m_Name: CheckmarkContainer
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114871931124001998
+--- !u!114 &114407294212940736
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d0046593eb34a468527e3b9a670b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_itemType: 0
 --- !u!222 &222210657578847624
 CanvasRenderer:
   m_ObjectHideFlags: 1

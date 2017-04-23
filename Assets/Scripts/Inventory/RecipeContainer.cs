@@ -16,6 +16,11 @@ public class RecipeContainer : MonoBehaviour {
         {
             Debug.Log("Couldn't find craft button!");
         }
+
+        if (m_checkmarks == null)
+        {
+            Debug.Log("Couldn't find checkmarks!");
+        }
     }
 	
 	// Update is called once per frame
