@@ -70,7 +70,7 @@ public class SmartCameraSystem : MonoBehaviour
                 Ray ray = cam.ViewportPointToRay(viewPos);
                 RaycastHit hit;
                 Physics.Raycast(ray, out hit);
-                if (hit.collider.tag == "Player" || hit.collider.tag == "Target")
+                if (hit.collider && (hit.collider.tag == "Player" || hit.collider.tag == "Target"))
                 {
                     //Debug.Log("1");
                     currentCamerasWithViewOfTarget.Add(cam);
