@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54565676193613578}
   - component: {fileID: 114378713905267452}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_Test
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,3 +208,4 @@ MonoBehaviour:
   jumpSpeed: 7
   verticalLookSpeed: 10
   rotationInterpolationSpeed: 0.15
+  interactionRadius: 2

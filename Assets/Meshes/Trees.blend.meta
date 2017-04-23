@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: e0d0b2fea83ebc749996783baeb70ae5
+timeCreated: 1492893011
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Grass_1
+    100002: Grass_2
+    100004: tree2
+    100006: tree3
+    100008: tree4
+    100010: tree_1
+    100012: //RootNode
+    100014: wood1
+    100016: wood2
+    100018: wood1_collider
+    100020: wood2_collider
+    100022: Cylinder
+    100024: Tree1_collider
+    100026: Tree2_collider
+    100028: Tree3_collider
+    400000: Grass_1
+    400002: Grass_2
+    400004: tree2
+    400006: tree3
+    400008: tree4
+    400010: tree_1
+    400012: //RootNode
+    400014: wood1
+    400016: wood2
+    400018: wood1_collider
+    400020: wood2_collider
+    400022: Cylinder
+    400024: Tree1_collider
+    400026: Tree2_collider
+    400028: Tree3_collider
+    2300000: Grass_1
+    2300002: Grass_2
+    2300004: tree2
+    2300006: tree3
+    2300008: tree4
+    2300010: tree_1
+    2300012: wood1
+    2300014: wood2
+    2300016: wood1_collider
+    2300018: wood2_collider
+    2300020: Cylinder
+    2300022: Tree1_collider
+    2300024: Tree2_collider
+    2300026: Tree3_collider
+    3300000: Grass_1
+    3300002: Grass_2
+    3300004: tree2
+    3300006: tree3
+    3300008: tree4
+    3300010: tree_1
+    3300012: wood1
+    3300014: wood2
+    3300016: wood1_collider
+    3300018: wood2_collider
+    3300020: Cylinder
+    3300022: Tree1_collider
+    3300024: Tree2_collider
+    3300026: Tree3_collider
+    4300000: wood2
+    4300002: Grass_2
+    4300004: tree4
+    4300006: Grass_1
+    4300008: wood1
+    4300010: tree3
+    4300012: tree2
+    4300014: tree_1
+    4300016: wood1_collider
+    4300018: wood2_collider
+    4300020: Cylinder
+    4300022: Tree1_collider
+    4300024: Tree2_collider
+    4300026: Tree3_collider
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
