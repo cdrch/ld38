@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Item : Interactable {
     public Sprite m_GUISprite;
+    public ItemType m_itemType;
+    public bool m_shouldHighlight;
 
 	// Use this for initialization
 	void Start ()
@@ -17,6 +19,11 @@ public class Item : Interactable {
     {
 		
 	}
+
+    public ItemType GetItemType()
+    {
+        return m_itemType;
+    }
 
     public Item TryToPickUp()
     {
