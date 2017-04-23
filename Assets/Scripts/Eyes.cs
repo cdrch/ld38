@@ -8,16 +8,32 @@ public class Eyes : MonoBehaviour
     public float changeSpeed = 1f; // Seconds to open or close
     public float scaleFactor = 10f; // This is the maximum amount the eyes can be open
 
-    
+    public EyeLookAtPlayer m_rightEye;
+    private GameObject m_player;
 
 	void Start ()
 	{
         StartCoroutine(Blink());
-	}
+
+        m_player = GameObject.FindGameObjectWithTag("Player");
+        if(!m_player)
+        {
+            Debug.Log("Could not find player!");
+        }
+        if (!m_rightEye)
+        {
+            Debug.Log("Could not find right eye!");
+        }
+    }
 
 	void Update ()
 	{
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, scaleFactor * opennessFactor);
+
+        if (m_rightEye.LookForPlayer(m_player))
+        {
+            Debug.Log("Found you!");
+        }
 	}
 
     IEnumerator Close()
