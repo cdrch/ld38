@@ -117,7 +117,11 @@ public class Inventory : MonoBehaviour
     {
         m_isOpen = !m_isOpen;
         m_inventoryScreen.SetActive(m_isOpen);
-        SetItemImages(m_items);
+        if (m_isOpen)
+        {
+            SetItemImages(m_items);
+            UpdateCraftingChecklist(m_items);
+        }
     }
 
     private void SetSlotImageAndColor(ref GameObject slot, Item item)
@@ -126,6 +130,20 @@ public class Inventory : MonoBehaviour
 
         bool itemInRecipe = m_craftingManger.IsItemInRecipe(item.GetItemType());
         slot.GetComponent<Image>().color = itemInRecipe ? m_tintedItemColor : m_normalItemColor;
+    }
+
+    private void UpdateCraftingChecklist(Item[] items)
+    {
+        m_craftingManger.ResetAllChecks();
+        foreach (Item item in items)
+        {
+            if (!item)
+            {
+                // Reached the last item, stop iterating
+                break;
+            }
+            m_craftingManger.SetCheckForItemType(item.GetItemType());
+        }
     }
 
     private void SetItemImages(Item[] items)
@@ -138,12 +156,6 @@ public class Inventory : MonoBehaviour
             if (items[idx] != null)
             {
                 SetSlotImageAndColor(ref m_inventoryRows[row][col], items[idx]);
-                /*
-                m_inventoryRows[row][col].transform.GetChild(0).GetComponent<Image>().sprite = items[idx].GetSprite();
-
-                bool itemInRecipe = m_craftingManger.IsItemInRecipe(items[idx].GetItemType());
-                m_inventoryRows[row][col].GetComponent<Image>().color = itemInRecipe ? m_tintedItemColor : m_normalItemColor;
-                */
                 col++;
                 if (col == 4)
                 {
