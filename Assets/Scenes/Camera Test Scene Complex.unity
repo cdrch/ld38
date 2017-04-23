@@ -347,8 +347,20 @@ MonoBehaviour:
   m_items: []
   m_inventoryScreen: {fileID: 0}
   m_craftingManger: {fileID: 0}
-  m_normalItemColor: {r: 0, g: 0, b: 0, a: 0}
-  m_tintedItemColor: {r: 0, g: 0, b: 0, a: 0}
+  m_normalItemColor: {r: 1, g: 1, b: 1, a: 1}
+  m_tintedItemColor: {r: 0.659, g: 1, b: 1, a: 1}
+--- !u!114 &126244263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 126244260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e79ea1f7bcd6614387dea784e713f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentRecipe: 9
 --- !u!4 &126244268 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4318373900227964, guid: 186612308c6549b409a008e178bc60ed,
