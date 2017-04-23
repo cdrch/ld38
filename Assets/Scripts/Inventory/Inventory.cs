@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
         return m_isOpen;
     }
     
-    public void AddItemToInventory(Item item)
+    public bool AddItemToInventory(Item item)
     {
         bool itemPlaced = false;
         for (int i = 0; i < m_items.Length; i++)
@@ -78,15 +78,13 @@ public class Inventory : MonoBehaviour
             item.transform.parent = gameObject.transform;
             item.transform.localPosition = Vector3.zero;
 
-            // "The item has been put in your inventory!"
-            // TODO: Play some happy SFX
             Debug.Log(item.name + " has been put in your inventory!");
+            return true;
         }
         else
         {
-            // "Your inventory is full!"
-            // TODO: Play some sad SFX
             Debug.Log("Your inventory is too full to hold " + item.name + "!");
+            return false;
         }
     }
 

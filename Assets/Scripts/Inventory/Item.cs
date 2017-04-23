@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Item : Interactable {
     public Sprite m_GUISprite;
     public ItemType m_itemType;
     public bool m_shouldHighlight;
 
-	// Use this for initialization
-	void Start ()
+    public AudioClip m_pickUp;
+    public AudioClip m_failPickUp;
+    private AudioSource m_audio;
+
+    // Use this for initialization
+    void Start ()
     {
-        
+        m_audio = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -36,7 +41,8 @@ public class Item : Interactable {
         Item i = TryToPickUp();
         if (i != null)
         {
-            interacter.GetComponent<Inventory>().AddItemToInventory(i);
+            bool successfullyPickedUp = interacter.GetComponent<Inventory>().AddItemToInventory(i);
+            m_audio.PlayOneShot(successfullyPickedUp ? m_pickUp : m_failPickUp, 1f);
             return true;
         }
         else // If something prevented pick up
