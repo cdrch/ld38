@@ -8,6 +8,8 @@ public class Eyes : MonoBehaviour
     public float changeSpeed = 1f; // Seconds to open or close
     public float scaleFactor = 10f; // This is the maximum amount the eyes can be open
 
+    
+
 	void Start ()
 	{
         StartCoroutine(Blink());
