@@ -54,6 +54,11 @@ public class Inventory : MonoBehaviour
             // TODO: Handle input here
         }
 	}
+
+    public bool IsOpen()
+    {
+        return m_isOpen;
+    }
     
     public void AddItemToInventory(Item item)
     {
@@ -132,6 +137,12 @@ public class Inventory : MonoBehaviour
         slot.GetComponent<Image>().color = itemInRecipe ? m_tintedItemColor : m_normalItemColor;
     }
 
+    private void ResetSlotImageAndColor(ref GameObject slot)
+    {
+        slot.transform.GetChild(0).GetComponent<Image>().sprite = null;
+        slot.GetComponent<Image>().color = m_normalItemColor;
+    }
+
     private void UpdateCraftingChecklist(Item[] items)
     {
         m_craftingManger.ResetAllChecks();
@@ -144,6 +155,7 @@ public class Inventory : MonoBehaviour
             }
             m_craftingManger.SetCheckForItemType(item.GetItemType());
         }
+        m_craftingManger.EnableCraftButtonIfAble();
     }
 
     private void SetItemImages(Item[] items)
@@ -156,17 +168,17 @@ public class Inventory : MonoBehaviour
             if (items[idx] != null)
             {
                 SetSlotImageAndColor(ref m_inventoryRows[row][col], items[idx]);
-                col++;
-                if (col == 4)
-                {
-                    row++;
-                    col = 0;
-                }
             }
             else
             {
-                // We've hit the last item, stop iterating
-                break;
+                ResetSlotImageAndColor(ref m_inventoryRows[row][col]);
+            }
+
+            col++;
+            if (col == 4)
+            {
+                row++;
+                col = 0;
             }
         }
     }
@@ -174,5 +186,40 @@ public class Inventory : MonoBehaviour
     public void SetItems(Item[] items)
     {
 
+    }
+
+    public void CraftRecipe()
+    {
+        int[] indexList = new int[m_craftingManger.GetCurrentRecipeList().Length];
+        int curIndex = 0;
+
+        for(int idx = 0; idx < m_items.Length; idx++)
+        {
+            if (!m_items[idx])
+            {
+                continue;
+            }
+
+            if (m_craftingManger.IsItemInRecipe(m_items[idx].GetItemType()))
+            {
+                indexList[curIndex++] = idx;
+                if (curIndex == indexList.Length)
+                {
+                    break;
+                }
+            }
+        }
+
+        if (curIndex == indexList.Length)
+        {
+            foreach (int index in indexList)
+            {
+                RemoveItemFromInventory(m_items[index]);
+            }
+            GameObject craftedItem = m_craftingManger.CraftCurrentRecipe();
+            AddItemToInventory(craftedItem.GetComponent<Item>());
+            SetItemImages(m_items);
+            UpdateCraftingChecklist(m_items);
+        }
     }
 }

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftingManager : MonoBehaviour {
-    public Dictionary<ItemType, ItemType[]> m_recipes;
+    private Dictionary<ItemType, ItemType[]> m_recipes;
     public ItemType m_currentRecipe;
+    private GameObject m_player;
 
     private RecipeContainer m_recipeContainer;
+
+    public GameObject m_hammerPrefab;
+    //public GameObject m_ramPrefab;
+    //public GameObject m_dynamitePrefab;
 
     // Use this for initialization
     void Start()
@@ -25,6 +30,12 @@ public class CraftingManager : MonoBehaviour {
         {
             Debug.Log("Couldn't find RecipeContainer!");
         }
+
+        m_player = GameObject.FindGameObjectWithTag("Player").gameObject;
+        if (!m_player)
+        {
+            Debug.Log("Couldn't find Player!");
+        }
     }
 
     // Update is called once per frame
@@ -32,9 +43,20 @@ public class CraftingManager : MonoBehaviour {
     {
     }
 
-    private ItemType[] GetRecipeListForItem(ItemType type)
+    public ItemType[] GetCurrentRecipeList()
     {
-        return m_recipes[type];
+        return m_recipes[m_currentRecipe];
+    }
+
+    public GameObject CraftCurrentRecipe()
+    {
+        switch(m_currentRecipe)
+        {
+            case ItemType.HAMMER:
+                return Instantiate(m_hammerPrefab, m_player.transform.position, Quaternion.identity);
+            default:
+                return null;
+        }
     }
 
     public bool IsItemInRecipe(ItemType type)
@@ -57,5 +79,10 @@ public class CraftingManager : MonoBehaviour {
     public void SetCheckForItemType(ItemType type)
     {
         m_recipeContainer.SetCheckForItemType(type);
+    }
+
+    public void EnableCraftButtonIfAble()
+    {
+        m_recipeContainer.EnableCraftButtonIfAble();
     }
 }
