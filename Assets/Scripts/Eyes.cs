@@ -9,6 +9,7 @@ public class Eyes : MonoBehaviour
     public float scaleFactor = 10f; // This is the maximum amount the eyes can be open
 
     public EyeLookAtPlayer m_rightEye;
+    public EyeLookAtPlayer m_leftEye;
     private GameObject m_player;
 
 	void Start ()
@@ -20,9 +21,9 @@ public class Eyes : MonoBehaviour
         {
             Debug.Log("Could not find player!");
         }
-        if (!m_rightEye)
+        if (!m_rightEye || !m_leftEye)
         {
-            Debug.Log("Could not find right eye!");
+            Debug.Log("Could not find eye(s)!");
         }
     }
 
@@ -30,7 +31,7 @@ public class Eyes : MonoBehaviour
 	{
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, scaleFactor * opennessFactor);
 
-        if (m_rightEye.LookForPlayer(m_player))
+        if (m_rightEye.LookForPlayer(m_player) || m_leftEye.LookForPlayer(m_player))
         {
             Debug.Log("Found you!");
         }
