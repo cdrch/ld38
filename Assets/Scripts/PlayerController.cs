@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
 	{
+        // Reset the velocity to zero - moved here from HandleWalk to prevent the player from falling over while the inventory is open
+        m_rigidBody.velocity = new Vector3(0f, m_rigidBody.velocity.y, 0f);
+
         if (!m_inventory.IsOpen())
         {
             HandleWalk();
@@ -54,9 +57,12 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.SetBool("IsWalking", false);
         }
-        HandleInventory();
+        
         if (CheckGrounded())
+        {
             m_animator.SetBool("IsInAir", false);
+            HandleInventory();
+        }            
         else
             m_animator.SetBool("IsInAir", true);
     }
@@ -71,9 +77,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleWalk()
     {
-        // Reset the velocity to zero
-        m_rigidBody.velocity = new Vector3(0f, m_rigidBody.velocity.y, 0f);
-
         // The amount that should be moved in this frame
         float distance = walkSpeed * Time.deltaTime;
 
