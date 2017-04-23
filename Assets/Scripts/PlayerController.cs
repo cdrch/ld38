@@ -32,10 +32,13 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
 	{
-        HandleWalk();
-        HandleJump();
+        if (!m_inventory.IsOpen())
+        {
+            HandleWalk();
+            HandleJump();
+            CheckForInteractables();
+        }
         HandleInventory();
-        CheckForInteractables();
 	}
 
     private void HandleInventory()

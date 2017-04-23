@@ -27,6 +27,11 @@ public class Checkmark : MonoBehaviour {
 		
 	}
 
+    public bool IsChecked()
+    {
+        return m_isChecked;
+    }
+
     public ItemType GetItemType()
     {
         return m_itemType;

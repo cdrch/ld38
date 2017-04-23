@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentRecipe: 9
+  m_hammerPrefab: {fileID: 1992338830993564, guid: e6c2ec872b5e3684dba69031851bf0ef,
+    type: 2}
 --- !u!4 &126244268 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4318373900227964, guid: 186612308c6549b409a008e178bc60ed,
@@ -3977,22 +3979,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 362910004}
   m_Mesh: {fileID: 4300020, guid: c4ca834ff29b9de40820c9f933f0d0fa, type: 3}
---- !u!1 &417304300 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1140014635043086, guid: b7003c6cedb91544faabf85a74d67d11,
-    type: 2}
-  m_PrefabInternal: {fileID: 1411399686}
---- !u!114 &417304304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 417304300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f80a28bf3297d145846b767e883c0e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &427336260
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,29 +8183,8 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114771910643686138, guid: b7003c6cedb91544faabf85a74d67d11,
-        type: 2}
-      propertyPath: m_itemType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114498799678097596, guid: b7003c6cedb91544faabf85a74d67d11,
-        type: 2}
-      propertyPath: m_itemType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114715883336530554, guid: b7003c6cedb91544faabf85a74d67d11,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114379900197004988, guid: b7003c6cedb91544faabf85a74d67d11,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114294421844469750, guid: b7003c6cedb91544faabf85a74d67d11,
-        type: 2}
-      propertyPath: m_Enabled
+    - target: {fileID: 1643583053663028, guid: b7003c6cedb91544faabf85a74d67d11, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
