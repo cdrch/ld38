@@ -33,7 +33,9 @@ public class Eyes : MonoBehaviour
 
         if (m_rightEye.LookForPlayer(m_player) || m_leftEye.LookForPlayer(m_player))
         {
-            Debug.Log("Found you!");
+            //Debug.Log("Found you!");
+
+            // TODO: Handle being seen
         }
 	}
 

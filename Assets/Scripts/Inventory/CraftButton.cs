@@ -25,6 +25,7 @@ public class CraftButton : MonoBehaviour {
     {
 		if (m_isEnabled && m_playerInventory.IsOpen() && Input.GetButtonDown("Interact"))
         {
+            Disable();
             m_playerInventory.CraftRecipe();
         }
 	}
