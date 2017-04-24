@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < m_items.Length; i++)
         {
-            if (m_items[i].GetItemType() == type)
+            if (m_items[i] && m_items[i].GetItemType() == type)
             {
                 return true;
             }

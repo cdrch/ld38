@@ -95,10 +95,8 @@ public class RecipeContainer : MonoBehaviour {
 
     public void SetCheckForItemType(ItemType type)
     {
-        Debug.Log("Setting check.");
         foreach (Checkmark check in m_checkmarks)
         {
-            Debug.Log("Check Type: " + check.GetItemType());
             if (check.GetItemType() == type)
             {
                 check.Check();

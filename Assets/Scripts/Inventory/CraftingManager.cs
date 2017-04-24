@@ -36,7 +36,6 @@ public class CraftingManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Setting New Recipe");
             SetNewRecipe();
         }
         
@@ -53,7 +52,6 @@ public class CraftingManager : MonoBehaviour {
 
     private void SetNewRecipe()
     {
-        Debug.Log("Setting new recipe: " + m_recipeOrder[m_currentRecipe]);
         m_recipeContainer.SetNewRecipe(m_recipeOrder[m_currentRecipe], GetCurrentRecipeList());
     }
 

@@ -24,6 +24,11 @@ public class ActivityArea : Interactable {
 
     public override bool Interact(PlayerController interacter)
     {
+        if (m_currentItemTypeNeeded == 3)
+        {
+            return false;
+        }
+
         if (m_playerInventory.CheckInventoryForItemType(m_itemTypesNeeded[m_currentItemTypeNeeded]))
         {
             m_currentItemTypeNeeded++;
