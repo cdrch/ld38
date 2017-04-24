@@ -19,6 +19,7 @@ public class RecipeContainer : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        Debug.Log("Starting Recipe Container");
         m_checkmarks = new Checkmark[4];
         m_craftButton = this.gameObject.GetComponentInChildren<CraftButton>();
 

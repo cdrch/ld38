@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068fde3c65fad5446a0a574d13c2ca0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GUISprite: {fileID: 0}
+  m_GUISprite: {fileID: 21300000, guid: 79cfa6c3a5f1d71488587a0e02948258, type: 3}
   m_itemType: 8
   m_shouldHighlight: 0
   m_pickUp: {fileID: 8300000, guid: 7708f4ab7d9a6fc479a9b5b489fc8d99, type: 3}

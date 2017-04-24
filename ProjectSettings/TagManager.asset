@@ -7,6 +7,7 @@ TagManager:
   - Solid
   - Target
   - Camera
+  - Checkmark
   layers:
   - Default
   - TransparentFX

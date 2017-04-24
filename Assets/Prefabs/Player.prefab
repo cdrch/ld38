@@ -2092,6 +2092,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f80a28bf3297d145846b767e883c0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_checkmarkPrefab: {fileID: 1626956614656944, guid: 878d3c6ce113aaf4cbbeaafef17a8746,
+    type: 2}
+  m_hammerRecipe: {fileID: 21300000, guid: 0d63b0c4d40c4f84cbf94333c9ac0ed1, type: 3}
+  m_ramRecipe: {fileID: 21300000, guid: e18d18aacda708741a55d0edbcbbc69b, type: 3}
+  m_dynamiteRecipe: {fileID: 21300000, guid: 9df98c9f92428734b94f455e2e74a589, type: 3}
 --- !u!114 &114511392262100940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2462,7 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e79ea1f7bcd6614387dea784e713f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_recipeOrder: 09000000030000000b000000
+  m_recipeOrder: 090000000a0000000b000000
   m_currentRecipe: 0
   m_hammerPrefab: {fileID: 1992338830993564, guid: e6c2ec872b5e3684dba69031851bf0ef,
     type: 2}
