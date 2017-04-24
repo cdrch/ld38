@@ -27,10 +27,6 @@ public class Checkmark : MonoBehaviour {
         if (!m_checkImage)
         {
             m_checkImage = this.gameObject.transform.GetChild(0).gameObject;
-            if (!m_checkImage)
-            {
-                Debug.Log("Could not find check image!");
-            }
         }
     }
 
@@ -56,7 +52,6 @@ public class Checkmark : MonoBehaviour {
 
     public void Check()
     {
-        Debug.Log("Checked");
         m_isChecked = true;
         SetCheckImageVisibility(m_isChecked);
     }

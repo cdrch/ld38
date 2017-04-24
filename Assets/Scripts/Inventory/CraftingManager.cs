@@ -14,27 +14,32 @@ public class CraftingManager : MonoBehaviour {
     public GameObject m_ramPrefab;
     public GameObject m_dynamitePrefab;
 
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
         m_recipes = new Dictionary<ItemType, ItemType[]>();
         m_recipes.Add(ItemType.HAMMER, new ItemType[] { ItemType.ROCK, ItemType.STICK, ItemType.WIRE });
         m_recipes.Add(ItemType.RAM, new ItemType[] { ItemType.CART, ItemType.LOG, ItemType.WIRE });
         m_recipes.Add(ItemType.DYNAMITE, new ItemType[] { ItemType.TUBE, ItemType.FUSE, ItemType.GUN_POWDER, ItemType.MATCH });
-        
+
         Transform inventoryScreen = this.gameObject.transform.GetChild(0);
         int lastChild = inventoryScreen.childCount - 1;
         m_recipeContainer = inventoryScreen.GetChild(lastChild).gameObject.GetComponent<RecipeContainer>();
+        m_player = GameObject.FindGameObjectWithTag("Player").gameObject;
+    }
+
+    // Use this for initialization
+    void Start()
+    {
         if (!m_recipeContainer)
         {
             Debug.Log("Couldn't find RecipeContainer!");
         }
         else
         {
+            Debug.Log("Setting New Recipe");
             SetNewRecipe();
         }
-
-        m_player = GameObject.FindGameObjectWithTag("Player").gameObject;
+        
         if (!m_player)
         {
             Debug.Log("Couldn't find Player!");
