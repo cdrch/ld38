@@ -13,12 +13,7 @@ public class Checkmark : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        m_checkImage = this.gameObject.transform.GetChild(0).gameObject;
-
-        if (!m_checkImage)
-        {
-            Debug.Log("Could not find check image!");
-        }
+        Init();
 	}
 	
 	// Update is called once per frame
@@ -26,6 +21,18 @@ public class Checkmark : MonoBehaviour {
     {
 		
 	}
+
+    public void Init()
+    {
+        if (!m_checkImage)
+        {
+            m_checkImage = this.gameObject.transform.GetChild(0).gameObject;
+            if (!m_checkImage)
+            {
+                Debug.Log("Could not find check image!");
+            }
+        }
+    }
 
     public bool IsChecked()
     {
@@ -37,6 +44,11 @@ public class Checkmark : MonoBehaviour {
         return m_itemType;
     }
 
+    public void SetItemType(ItemType type)
+    {
+        m_itemType = type;
+    }
+
     private void SetCheckImageVisibility(bool visible)
     {
         m_checkImage.SetActive(visible);
@@ -44,6 +56,7 @@ public class Checkmark : MonoBehaviour {
 
     public void Check()
     {
+        Debug.Log("Checked");
         m_isChecked = true;
         SetCheckImageVisibility(m_isChecked);
     }

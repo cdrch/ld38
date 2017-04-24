@@ -146,12 +146,10 @@ public class Inventory : MonoBehaviour
         m_craftingManger.ResetAllChecks();
         foreach (Item item in items)
         {
-            if (!item)
+            if (item)
             {
-                // Reached the last item, stop iterating
-                break;
+                m_craftingManger.SetCheckForItemType(item.GetItemType());
             }
-            m_craftingManger.SetCheckForItemType(item.GetItemType());
         }
         m_craftingManger.EnableCraftButtonIfAble();
     }
@@ -188,36 +186,25 @@ public class Inventory : MonoBehaviour
 
     public void CraftRecipe()
     {
-        int[] indexList = new int[m_craftingManger.GetCurrentRecipeList().Length];
-        int curIndex = 0;
+        ItemType[] recipe = m_craftingManger.GetCurrentRecipeList();
 
-        for(int idx = 0; idx < m_items.Length; idx++)
+        foreach (ItemType type in recipe)
         {
-            if (!m_items[idx])
+            for (int i = 0; i < m_items.Length; i++)
             {
-                continue;
-            }
-
-            if (m_craftingManger.IsItemInRecipe(m_items[idx].GetItemType()))
-            {
-                indexList[curIndex++] = idx;
-                if (curIndex == indexList.Length)
+                if (m_items[i] && m_items[i].GetItemType() == type)
                 {
+                    Debug.Log(m_items[i].name + " was taken from your inventory.");
+                    m_items[i] = null;
                     break;
                 }
             }
         }
+        
+        GameObject craftedItem = m_craftingManger.CraftCurrentRecipe();
+        AddItemToInventory(craftedItem.GetComponent<Item>());
+        SetItemImages(m_items);
 
-        if (curIndex == indexList.Length)
-        {
-            foreach (int index in indexList)
-            {
-                RemoveItemFromInventory(m_items[index]);
-            }
-            GameObject craftedItem = m_craftingManger.CraftCurrentRecipe();
-            AddItemToInventory(craftedItem.GetComponent<Item>());
-            SetItemImages(m_items);
-            UpdateCraftingChecklist(m_items);
-        }
+        UpdateCraftingChecklist(m_items);
     }
 }
