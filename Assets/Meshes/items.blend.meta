@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 29308c88dc14e5443bdbf4804fc27510
+timeCreated: 1492977843
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Axe
+    100002: BookMatches1
+    100004: BookMatches2
+    100006: Dynamite1
+    100008: Dynamite2
+    100010: Fuse
+    100012: //RootNode
+    100014: Matches
+    100016: MetalBar
+    100018: Powder
+    100020: Rock_item
+    100022: Stick
+    100024: Wire1
+    100026: Wire2
+    400000: Axe
+    400002: BookMatches1
+    400004: BookMatches2
+    400006: Dynamite1
+    400008: Dynamite2
+    400010: Fuse
+    400012: //RootNode
+    400014: Matches
+    400016: MetalBar
+    400018: Powder
+    400020: Rock_item
+    400022: Stick
+    400024: Wire1
+    400026: Wire2
+    2300000: Axe
+    2300002: BookMatches1
+    2300004: BookMatches2
+    2300006: Dynamite1
+    2300008: Dynamite2
+    2300010: Fuse
+    2300012: Matches
+    2300014: MetalBar
+    2300016: Powder
+    2300018: Rock_item
+    2300020: Stick
+    2300022: Wire1
+    2300024: Wire2
+    3300000: Axe
+    3300002: BookMatches1
+    3300004: BookMatches2
+    3300006: Dynamite1
+    3300008: Dynamite2
+    3300010: Fuse
+    3300012: Matches
+    3300014: MetalBar
+    3300016: Powder
+    3300018: Rock_item
+    3300020: Stick
+    3300022: Wire1
+    3300024: Wire2
+    4300000: Powder
+    4300002: Fuse
+    4300004: MetalBar
+    4300006: Dynamite2
+    4300008: Dynamite1
+    4300010: BookMatches1
+    4300012: BookMatches2
+    4300014: Matches
+    4300016: Wire2
+    4300018: Axe
+    4300020: Wire1
+    4300022: Rock_item
+    4300024: Stick
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
