@@ -19,19 +19,7 @@ public class RecipeContainer : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Debug.Log("Starting Recipe Container");
-        m_checkmarks = new Checkmark[4];
-        m_craftButton = this.gameObject.GetComponentInChildren<CraftButton>();
-
-        m_recipeSprites = new Dictionary<ItemType, Sprite>();
-        m_recipeSprites.Add(ItemType.HAMMER, m_hammerRecipe);
-        m_recipeSprites.Add(ItemType.RAM, m_ramRecipe);
-        m_recipeSprites.Add(ItemType.DYNAMITE, m_dynamiteRecipe);
-
-        if (!m_craftButton)
-        {
-            Debug.Log("Couldn't find craft button!");
-        }
+        Init();
     }
 	
 	// Update is called once per frame
@@ -40,8 +28,29 @@ public class RecipeContainer : MonoBehaviour {
 		
 	}
 
+    private void Init()
+    {
+        Debug.Log("Starting Recipe Container");
+        if (m_checkmarks == null)
+        {
+            m_checkmarks = new Checkmark[4];
+        }
+        if (!m_craftButton)
+        {
+            m_craftButton = this.gameObject.GetComponentInChildren<CraftButton>();
+        }
+        if (m_recipeSprites == null)
+        {
+            m_recipeSprites = new Dictionary<ItemType, Sprite>();
+            m_recipeSprites.Add(ItemType.HAMMER, m_hammerRecipe);
+            m_recipeSprites.Add(ItemType.RAM, m_ramRecipe);
+            m_recipeSprites.Add(ItemType.DYNAMITE, m_dynamiteRecipe);
+        }
+    }
+
     private void DestroyCurrentChecks()
     {
+        Init();
         foreach(Checkmark check in m_checkmarks)
         {
             if (check)
@@ -57,12 +66,14 @@ public class RecipeContainer : MonoBehaviour {
         List<Checkmark> checks = new List<Checkmark>();
         foreach (ItemType type in itemTypes)
         {
+            Vector3 offset = new Vector3(-68f, offsets[index], 0f);
             GameObject check = Instantiate(m_checkmarkPrefab, this.transform);
-            Vector3 newPos = this.transform.position + new Vector3(-68f, offsets[index++], 0f);
-            check.transform.SetPositionAndRotation(newPos, Quaternion.identity);
+            check.transform.localPosition = offset;
+
             check.GetComponent<Checkmark>().SetItemType(type);
             check.GetComponent<Checkmark>().Init();
             checks.Add(check.GetComponent<Checkmark>());
+            index++;
         }
         m_checkmarks = checks.ToArray();
     }

@@ -100,6 +100,18 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public bool CheckInventoryForItemType(ItemType type)
+    {
+        for (int i = 0; i < m_items.Length; i++)
+        {
+            if (m_items[i] && m_items[i].GetItemType() == type)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Item RemoveItemFromInventory(Item item)
     {
         for (int i = 0; i < m_items.Length; i++)
