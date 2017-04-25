@@ -27,7 +27,21 @@ public class PlayerController : MonoBehaviour
     private int layerMask;
     private float skinWidth;
 
-	void Start ()
+    private Camera currentCamera;
+    private bool sceneHasBeenChanged;
+    private bool needToUpdateZAxis;
+    private bool needToUpdateXAxis;
+
+    private Vector2 customXAxis;
+    private Vector2 customZAxis;
+
+    public Transform oldX;
+    public Transform oldZ;
+    public Transform newX;
+    public Transform newZ;
+
+
+    void Start ()
 	{
         m_rigidBody = GetComponent<Rigidbody>();
         m_collider = GetComponent<CapsuleCollider>();
@@ -75,6 +89,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CalculateCustomAxes(bool updateX, bool updateZ)
+    {
+        if (updateX)
+        {
+            oldX.rotation = newX.rotation;
+            needToUpdateXAxis = false;
+        }
+        if (updateZ)
+        {
+            oldZ.rotation = newZ.rotation;
+            needToUpdateZAxis = false;
+        }
+    }
+
+    // Call this whenever the view camera changes
+    public void OnCameraChange(Camera cam)
+    {
+        //newX.rotation = cam.transform.rotation;
+        newX.rotation = new Quaternion(cam.transform.rotation.x, 0f, cam.transform.rotation.z, cam.transform.rotation.w);
+        newZ.rotation = new Quaternion(cam.transform.rotation.x, 0f, cam.transform.rotation.z, cam.transform.rotation.w);
+        needToUpdateXAxis = true;
+        needToUpdateZAxis = true;
+        sceneHasBeenChanged = true;
+    }
+
     private void HandleWalk()
     {
         // The amount that should be moved in this frame
@@ -82,9 +121,36 @@ public class PlayerController : MonoBehaviour
 
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
+        /*
+        // Calculate custom axes - wow this is overly complex and hacky
+        if (sceneHasBeenChanged)
+        {
+            if (hAxis == 0 && vAxis == 0 && needToUpdateXAxis && needToUpdateZAxis)
+            {
+                CalculateCustomAxes(true, true);
+            }
+            else if (hAxis == 0 && needToUpdateXAxis)
+            {
+                CalculateCustomAxes(true, false);
+            }
+            else if (vAxis == 0 && needToUpdateZAxis)
+            {
+                CalculateCustomAxes(false, true);
+            }
 
+            if (!needToUpdateZAxis && !needToUpdateXAxis)
+            {
+                sceneHasBeenChanged = false;
+            }
+        }
+        */
         Vector3 movement = new Vector3(hAxis * distance, 0f, vAxis * distance);
+        /*
+        Vector3 hAxisMovement = oldX.right * hAxis * distance;
+        Vector3 vAxisMovement = oldZ.forward * vAxis * distance;
 
+        Vector3 movement = hAxisMovement + vAxisMovement;
+        */
         if (movement.x != 0 || movement.z != 0)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationInterpolationSpeed);

@@ -15,6 +15,8 @@ public class SmartCameraSystem : MonoBehaviour
     private Camera prevCamera;
     private Camera currentCamera;
 
+    private PlayerController player;
+
     // If the target/player is closer to a camera than this, it won't be considered for being an active camera
     public float minimumAllowedDistanceToCamera = 1f;
 
@@ -39,6 +41,9 @@ public class SmartCameraSystem : MonoBehaviour
             prevCamera = startingCamera;
             prevCamera.gameObject.SetActive(true);
             currentCamera = prevCamera;
+
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player.OnCameraChange(currentCamera);
         }
         else
         {
@@ -112,6 +117,8 @@ public class SmartCameraSystem : MonoBehaviour
             prevCamera.gameObject.SetActive(false);
             currentCamera.gameObject.SetActive(true);
             prevCamera = currentCamera;
+
+            //player.OnCameraChange(currentCamera);
         }
     }
 
